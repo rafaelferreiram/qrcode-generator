@@ -31,11 +31,11 @@ public class QRGenBarcodeGenerator {
 			BitMatrix bitMatrix = qrCodeWriter.encode(request.format(), BarcodeFormat.QR_CODE, 350, 350);
 			Path path = FileSystems.getDefault().getPath(PATH_FOLDER + request.getName() + "_" + new Date() + ".png");
 			logger.info("QRCode generate and saved into " + PATH_FOLDER);
-			
+
 			ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
 			MatrixToImageWriter.writeToPath(bitMatrix, TYPE, path);
 			MatrixToImageWriter.writeToStream(bitMatrix, TYPE, pngOutputStream);
-			
+
 			pngData = pngOutputStream.toByteArray();
 		} catch (Exception e) {
 			logger.error("Error while generating QRCODE.", e.getMessage());
