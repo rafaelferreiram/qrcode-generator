@@ -1,4 +1,4 @@
-package com.qrcode.generator.request;
+package com.qrcode.generator.dto.request;
 
 public class BarcodeRequestDTO {
 
