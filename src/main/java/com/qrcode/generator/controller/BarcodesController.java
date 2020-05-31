@@ -1,5 +1,6 @@
 package com.qrcode.generator.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +15,12 @@ import com.qrcode.generator.request.BarcodeRequestDTO;
 @RequestMapping("/barcodes")
 public class BarcodesController {
 
+	@Autowired
+	private QRGenBarcodeGenerator qrcodeGenerator;
+
 	@PostMapping(value = "/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
 	public ResponseEntity<byte[]> qrgenQRCodePost(@RequestBody BarcodeRequestDTO request) throws Exception {
-		byte[] qrCodeImageByteArray = QRGenBarcodeGenerator.getQRCodeImageByteArray(request);
+		byte[] qrCodeImageByteArray = qrcodeGenerator.getQRCodeImageByteArray(request);
 		if (qrCodeImageByteArray == null) {
 			return ResponseEntity.badRequest().body(qrCodeImageByteArray);
 		}

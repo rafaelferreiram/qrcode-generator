@@ -8,6 +8,7 @@ import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -16,15 +17,16 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.qrcode.generator.request.BarcodeRequestDTO;
 
+@Component
 public class QRGenBarcodeGenerator {
 
-	private static Logger logger = LoggerFactory.getLogger(QRGenBarcodeGenerator.class);
+	private Logger logger = LoggerFactory.getLogger(QRGenBarcodeGenerator.class);
 
-	private static String TYPE = "PNG";
+	private String TYPE = "PNG";
 
-	private static String PATH_FOLDER = "./QR-Codes/";
+	private String PATH_FOLDER = "./QR-Codes/";
 
-	public static byte[] getQRCodeImageByteArray(BarcodeRequestDTO request) throws WriterException, IOException {
+	public byte[] getQRCodeImageByteArray(BarcodeRequestDTO request) throws WriterException, IOException {
 		byte[] pngData = null;
 		try {
 			QRCodeWriter qrCodeWriter = new QRCodeWriter();
