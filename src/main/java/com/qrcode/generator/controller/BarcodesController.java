@@ -29,4 +29,5 @@ public class BarcodesController {
 		return ResponseEntity.ok().body(qrCodeImageByteArray);
 	}
 
+	
 }
